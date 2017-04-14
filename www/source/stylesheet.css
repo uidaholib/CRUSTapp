@@ -1,0 +1,35 @@
+.topBot{
+  border-top: thin solid black;
+  border-left: thin solid black;
+  border-bottom: thin solid black;
+
+}
+.left{
+  border-left: thin solid black;
+}
+.right{
+  border-left: thin solid black;
+  border-right: thin solid black;
+}
+.bot{
+  border-bottom: thin solid black;
+}
+.top{
+  border-top: thin solid black;
+}
+.ring{
+  background-color: rgb(230, 230, 230); /*Background color of breads*/
+}
+.info{
+  border: thin solid black;
+  background-color: rgb(230, 230, 230); /*Background color of info box*/
+}
+.ring:hover{
+  background-color: rgb(255, 255, 255); /*Background color when hovering over breads*/
+}
+.ring:not:hover{
+  background-color: rgb(230, 230, 230);
+}
+.selected{
+  background-color: rgb(255, 255, 255); /*Background color of selected bread*/
+}
