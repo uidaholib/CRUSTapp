@@ -10,6 +10,7 @@ go <- function(inParam){
   sigma <- inParam$sigma
   Xset <- inParam$Xset
   betas <- inParam$betas
+  tModelBetas <- inParam$tModelBetas
   modelCompare <- inParam$modelCompare
   
   ## Ray (replicator)
@@ -24,12 +25,12 @@ go <- function(inParam){
   } else if(agentType == ROB){
     model <- modelSimilarByTerm(gModel)
     
-    ## Bob (robust)
-  } else if(agentType == BOB){
+    ## Cara (robust)
+  } else if(agentType == CARA){
     model <- modelSimilarByInteraction(gModel)
     
-    ## Nel (random)
-  } else if(agentType == NEL){
+    ## Nell (random)
+  } else if(agentType == NELL){
     model <- models[[as.integer(runif(1, min=1, max=nModels + 1))]]
   }
   
@@ -39,6 +40,7 @@ go <- function(inParam){
   ## Analyze the Selected Model and Global Model
   Yset <- generateY(deterministic, sigma)
   stat <- analysis(model, gModel, Yset, Xset, betas)
+  dist <- 0
   
   switchModel <- FALSE
   if((modelCompare == TSTATISTICS) &
@@ -77,7 +79,10 @@ go <- function(inParam){
   
   if(switchModel){
     gModel <- model
+    dist <- calculateDistance(tModelBetas, stat$model$betasEst)
+  } else {
+    dist <- calculateDistance(tModelBetas, stat$gModel$betasEst)
   }
-
-  return(list(model1, model2))
+  
+  return(list(model1, model2, searchModel(gModel, models), dist))
 }

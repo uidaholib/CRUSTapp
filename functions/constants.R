@@ -15,8 +15,8 @@
 ## Types of agents
 RAY <- 1
 ROB <- 2
-BOB <- 3
-NEL <- 4
+CARA <- 3
+NELL <- 4
 
 ## Model comparison
 TSTATISTICS <- 1
